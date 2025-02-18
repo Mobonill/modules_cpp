@@ -6,7 +6,7 @@
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:26:24 by morgane           #+#    #+#             */
-/*   Updated: 2025/02/18 13:41:05 by morgane          ###   ########.fr       */
+/*   Updated: 2025/02/18 13:45:07 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ bool	isIndexValid(std::string command) {
 	}
 	if (isdigit(command[0]) == false) {
 		int n = atoi(command.c_str());
-		std::cout << n << " is the proble "<<std::endl;
 		std::cout << "Error: only numbers are allowed" << std::endl;
 		return (false);
 	}
