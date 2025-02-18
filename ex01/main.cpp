@@ -6,7 +6,7 @@
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:26:24 by morgane           #+#    #+#             */
-/*   Updated: 2025/02/18 13:30:37 by morgane          ###   ########.fr       */
+/*   Updated: 2025/02/18 13:41:05 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	isIndexValid(std::string command) {
 	}
 	if (atoi(command.c_str()) > 7){
 		
-		std::cout << "Error: index not found HERE" << std::endl;
+		std::cout << "Error: index not found" << std::endl;
 		return (false);
 	}
 	return (true);
