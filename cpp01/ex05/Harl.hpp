@@ -6,7 +6,7 @@
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:00:41 by morgane           #+#    #+#             */
-/*   Updated: 2025/02/22 20:15:11 by morgane          ###   ########.fr       */
+/*   Updated: 2025/02/22 23:39:34 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ class Harl {
         void complain(std::string level);
 
     private:
-        void debug(void );
+        void (Harl::*functptr[4])();
+        void debug(void);
         void info(void);
         void warning(void);
         void error(void);

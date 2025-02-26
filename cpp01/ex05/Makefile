@@ -6,7 +6,7 @@
 #    By: morgane <morgane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 19:57:34 by morgane           #+#    #+#              #
-#    Updated: 2025/02/22 19:59:53 by morgane          ###   ########.fr        #
+#    Updated: 2025/02/22 23:37:14 by morgane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = harl
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 SRC =	main.cpp \
+		Harl.cpp \
 		
 
 OBJ = $(SRC:.cpp=.o)
