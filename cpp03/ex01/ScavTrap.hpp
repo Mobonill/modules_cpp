@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:14:23 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/04 16:24:18 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:24:51 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 class ScavTrap : public ClapTrap {
 
 	public:
-	~ScavTrap();
-	void guardGate();
+		ScavTrap(void);
+		ScavTrap(ScavTrap& x);
+		ScavTrap(std::string name);
+		~ScavTrap();
+		ScavTrap& operator=(const ScavTrap& other);
+		void guardGate();
+		void attack(const std::string &target);
 
 };

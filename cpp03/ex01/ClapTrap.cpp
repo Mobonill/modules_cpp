@@ -6,22 +6,49 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:32:32 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/04 15:23:49 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/05 21:03:18 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap():_name("Unknown"), _hit(100), _energy(50), _attack(20) {
+
+	std::cout << "Claptrap Constructor default" << std::endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap& user) {
+
+	*this = user;
+}
+
 ClapTrap::ClapTrap(std::string name): _name(name), _hit(100), _energy(50), _attack(20) {
 
-	std::cout << "Constructor default" << std::endl;
+	std::cout << "Claptrap Constructor default" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
 
-	std::cout <<"Destructor default" << std::endl;
+	std::cout <<"Claptrap Destructor default" << std::endl;
 }
 
+void ClapTrap::setName(std::string name) {
+
+	this->_name = name;
+
+}
+std::string ClapTrap::getName(void) {
+
+	return (this->_name);
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &other)
+		*this = other;
+	return *this;
+}
 
 void ClapTrap::attack(const std::string& target){
 
@@ -42,12 +69,12 @@ void ClapTrap::attack(const std::string& target){
 void ClapTrap::takeDamage(unsigned int amount){
 	
 	if (this->_hit <= 0){
-			std::cout << "ClapTrap " << _name << " has no hit points " << std::endl;
+			std::cout << _name << " has no hit points " << std::endl;
 			this->_hit = 0;
 	}
 	else {
 		this->_hit -= amount;
-		std::cout << "ClapTrap " << _name << " takes " << amount << " damage points : he has " << this->_hit << " hit points and " << this->_energy << " energy points" << std::endl;
+		std::cout << _name << " takes " << amount << " damage points : he has " << this->_hit << " hit points and " << this->_energy << " energy points" << std::endl;
 	}
 }
 
@@ -61,6 +88,6 @@ if (this->_energy <= 0) {
 else {
 	this->_energy -= 1;
 	this->_hit += amount;
-	std::cout << "ClapTrap " << _name << " gets " << amount << " points back : he has " << this->_hit << " hit points and " << this->_energy << " energy points " << std::endl;
+	std::cout << _name << " gets " << amount << " points back : he has " << this->_hit << " hit points and " << this->_energy << " energy points " << std::endl;
 	}
 }
