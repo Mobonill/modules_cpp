@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 15:14:23 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/07 17:07:32 by morgane          ###   ########.fr       */
+/*   Created: 2025/03/07 16:52:29 by morgane           #+#    #+#             */
+/*   Updated: 2025/03/07 18:20:03 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 
 	public:
 		ScavTrap(void);
-		ScavTrap(ScavTrap& x);
+		ScavTrap(const ScavTrap& x);
 		ScavTrap(std::string name);
 		~ScavTrap();
 		ScavTrap& operator=(const ScavTrap& other);

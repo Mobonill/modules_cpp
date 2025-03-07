@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 11:32:43 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/07 17:06:54 by morgane          ###   ########.fr       */
+/*   Created: 2025/03/06 17:21:08 by mobonill          #+#    #+#             */
+/*   Updated: 2025/03/07 17:34:26 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class ClapTrap {
 	public:
 
 		ClapTrap();
-		ClapTrap(ClapTrap& user);
+		ClapTrap(const ClapTrap& user);
 		ClapTrap(std::string name);
 		~ClapTrap();
 
@@ -37,5 +37,4 @@ class ClapTrap {
 		int			_hit;
 		int			_energy;
 		int			_attack;
-
 };

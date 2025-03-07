@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:32:32 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/05 21:03:18 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:06:15 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 
 void ClapTrap::attack(const std::string& target){
 
-	if (this->_energy <= 0){
+	if (this->_hit <= 0) {
+		std::cout << _name <<" can't attack, he is dead" << std::endl;
+		this->_hit = 0;
+	}
+	else if (this->_energy <= 0){
 		std::cout << _name <<" can't attack, he has no energy left" << std::endl;
 		this->_energy = 0;
-	}
-	else if (this->_hit <= 0) {
-		std::cout << _name <<" can't attack, he has no hit points" << std::endl;
-		this->_hit = 0;
 	}
 	else {
 		this->_energy -= 1;
@@ -69,7 +69,7 @@ void ClapTrap::attack(const std::string& target){
 void ClapTrap::takeDamage(unsigned int amount){
 	
 	if (this->_hit <= 0){
-			std::cout << _name << " has no hit points " << std::endl;
+			std::cout << _name << " is already dead " << std::endl;
 			this->_hit = 0;
 	}
 	else {
@@ -85,9 +85,13 @@ if (this->_energy <= 0) {
 	std::cout << _name <<" can't repaire, he has no energy left" << std::endl;
 	this->_energy = 0;
 }
+else if (this->_hit <= 0) {
+	std::cout << _name << " can't repair, he's dead" << std::endl;
+}
 else {
 	this->_energy -= 1;
 	this->_hit += amount;
 	std::cout << _name << " gets " << amount << " points back : he has " << this->_hit << " hit points and " << this->_energy << " energy points " << std::endl;
 	}
 }
+

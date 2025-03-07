@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 15:24:38 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/07 17:05:07 by morgane          ###   ########.fr       */
+/*   Created: 2025/03/07 16:52:49 by morgane           #+#    #+#             */
+/*   Updated: 2025/03/07 18:32:47 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 ScavTrap::ScavTrap() : ClapTrap() {
 
+	_energy = 25;
 	std::cout << "ScavTrap default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap& x) : ClapTrap() {
+ScavTrap::ScavTrap(const ScavTrap& x) : ClapTrap() {
 
+	_energy = 25;
 	std::cout << "ScavTrap Copy constructor called" << std::endl;
 	*this = x;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
 
+	_energy = 25;
 	std::cout << "ScavTrap default constructor called" << std::endl;
 }
 
