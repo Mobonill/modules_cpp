@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:21:08 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/06 17:21:45 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:34:26 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class ClapTrap {
 	public:
 
 		ClapTrap();
-		ClapTrap(ClapTrap& user);
+		ClapTrap(const ClapTrap& user);
 		ClapTrap(std::string name);
 		~ClapTrap();
 
