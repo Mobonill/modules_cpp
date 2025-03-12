@@ -6,43 +6,50 @@
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:33:19 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/12 15:10:19 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/12 15:43:26 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
 int main(void) {
 
-	Animal* a = new Animal();
-	Cat* b = new Cat();
-	Dog* c = new Dog();
-	Dog* d = c;
-	const WrongAnimal* wrong_a = new WrongAnimal("Wrong Animal");
-	const WrongAnimal* wrong_cat = new WrongCat();
-	
-	std::cout << std::endl;
-	a->setType("\"Animal\" is not a type");
-	std::cout << "animal type = ---> " << a->getType() << std::endl;
-	std::cout << "cat type = ---> " << b->getType() << std::endl;
-	std::cout << "dog type = ---> " << d->getType() << std::endl << std::endl;
-	a->makeSound();
-	b->makeSound();
-	c->makeSound();
-	wrong_a->makeSound();
-	wrong_cat->makeSound();
-	std::cout << std::endl;
+	Animal* animals[10];
 
-	delete b;
-	delete c;
-	delete a;
-	delete wrong_cat;
-	delete wrong_a;
+	for (int i = 0; i < 6; i++) {
+		animals[i] = new Dog();
+		animals[i]->setIdea(0);
+	}
+
+	for (int i = 6; i < 10; i++) {
+		animals[i] = new Cat();
+		animals[i]->setIdea(0);
+	}
+
+	for (int i = 0; i < 10; i++)  {
+		animals[i]->makeSound();
+        std::cout << "Idea [" << i << "]: " << animals[i]->getIdea(0) << std::endl;
+	}
+
+
+	std::cout << std::endl << std::endl;
+	const Animal *j = new Dog();
+	const Animal *i = new Cat();
+	std::cout << std::endl << std::endl;
 	
+	std::cout << "dog idea : --> " << j->getIdea(0) << std::endl;
+	std::cout << "cat idea : --> " << i->getIdea(0) << std::endl << std::endl;
+	
+	delete j;
+	delete i;
+	for (int i = 0; i < 10; i++)
+		delete animals[i];
+
 	return 0;
 
 }

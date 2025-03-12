@@ -6,7 +6,7 @@
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:37:38 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/12 15:29:30 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/12 15:55:03 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,7 @@ void Animal::setType(std::string type) {
 	this->_type = type;
 }
 
-std::string Animal::getType(void) const {
+std::string Animal::getType(void) const{
 
 	return(this->_type);
-}
-
-
-void Animal::makeSound(void) const {
-	
-	std::cout << _type << ": What is the sound of this animal ?" << std::endl;
 }

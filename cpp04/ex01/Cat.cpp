@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:20:22 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/09 20:43:21 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:49:35 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@
 Cat::Cat() : Animal() {
 
 	_type = "Cat";
-	brain = new Brain();
+	this->brain = new Brain();
 	std::cout << "Cat default constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat& other) : Animal() {
 
-	*this = other;
+	this->_type = other._type;
+    this->brain = new Brain(*other.brain);
 	std::cout << "Cat copy constructor called" << std::endl;
 }
 
 Cat::Cat(std::string type): Animal() {
 
 	this->_type = type;
-	new Brain();
+	this->brain = new Brain();
 	std::cout << _type << " constructor called" << std::endl;
 }
 
@@ -40,23 +41,17 @@ Cat::~Cat() {
 
 Cat& Cat::operator=(const Cat& other) {
 
-	if (this != &other)
-		*this = other;
-
+	    if (this != &other) {
+        	this->_type = other._type;
+        	if (this->brain)
+         	   delete this->brain;
+       		this->brain = new Brain(*other.brain);
+		}
 	return (*this);
 }
 
-void Cat::setIdea(int index) {
 
-	brain->setIdea(index, "A human servant is approaching..");
-}
-
-std::string Cat::getIdea(int index) const {
-	
-	return (brain->getIdea(index));
-}
-
-void Cat::makeSound(void) {
+void Cat::makeSound(void) const{
 
 	std::cout << _type << ": Miaouuuu" << std::endl;
 

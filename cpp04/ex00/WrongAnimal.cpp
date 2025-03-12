@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 19:34:51 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/09 19:35:21 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:29:44 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ WrongAnimal::~WrongAnimal() {
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
 
 	if (this != &other)
-		*this = other;
+		this->_type = other._type;
 	return (*this);
 }
 
@@ -48,13 +48,13 @@ void WrongAnimal::setType(std::string type) {
 	this->_type = type;
 }
 
-std::string WrongAnimal::getType(void) {
+std::string WrongAnimal::getType(void) const{
 
 	return(this->_type);
 }
 
 
-void WrongAnimal::makeSound(void) {
+void WrongAnimal::makeSound(void) const {
 	
 	std::cout << _type << ": What is the sound of this Wronganimal ?" << std::endl;
 }

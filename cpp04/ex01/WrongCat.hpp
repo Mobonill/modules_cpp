@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 19:35:32 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/09 19:44:11 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:04:23 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ class WrongCat: public WrongAnimal {
 		WrongCat(std::string type);
 		~WrongCat();
 		WrongCat& operator=(const WrongCat& other);
+		void makeSound() const;
 
 };

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:34:11 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/12 15:29:24 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/12 15:41:34 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ class Animal {
 		Animal& operator=(const Animal& other);
 		void setType(std::string type);
 		std::string getType(void) const;
-		virtual void makeSound(void)const ;
+		virtual void setIdea(int index) = 0;
+		virtual std::string getIdea(int index) const = 0;
+		virtual void makeSound(void) const = 0;
 
 	protected:
 		std::string _type;

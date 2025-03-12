@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:37:38 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/09 20:48:37 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:33:23 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Animal::~Animal() {
 Animal& Animal::operator=(const Animal& other) {
 
 	if (this != &other)
-		*this = other;
+		this->_type = other._type;
 	return (*this);
 }
 
@@ -48,13 +48,13 @@ void Animal::setType(std::string type) {
 	this->_type = type;
 }
 
-std::string Animal::getType(void) {
+std::string Animal::getType(void) const{
 
 	return(this->_type);
 }
 
 
-void Animal::makeSound(void) {
+void Animal::makeSound(void) const {
 	
 	std::cout << _type << ": What is the sound of this animal ?" << std::endl;
 }
