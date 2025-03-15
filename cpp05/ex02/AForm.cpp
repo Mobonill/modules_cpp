@@ -12,90 +12,109 @@
 
 #include "AForm.hpp"
 
-AForm::AForm(): _name("Mysterious AForm"), _isSigned(false), _signGrade(50), _execGrade(100) {
-    
+AForm::AForm() : _name("Mysterious AForm"), _isSigned(false), _signGrade(50), _execGrade(100)
+{
+
 }
 
-AForm::AForm(std::string name, int sign, int exec): _name(name), _signGrade(sign), _execGrade(exec) {
-    _isSigned = false;
-} 
-
-AForm::AForm(const AForm& other): _name(other._name), _signGrade(other._signGrade), _execGrade(other._execGrade) {
-    this->_isSigned = other._isSigned;
+AForm::AForm(std::string name, int sign, int exec) : _name(name), _signGrade(sign), _execGrade(exec)
+{
+	_isSigned = false;
 }
 
-AForm::~AForm() {
-    
+AForm::AForm(const AForm &other) : _name(other._name), _signGrade(other._signGrade), _execGrade(other._execGrade)
+{
+	this->_isSigned = other._isSigned;
 }
 
-AForm& AForm::operator=(const AForm& rhs) {
-    
-    if (this != &rhs) {
-        this->_isSigned = rhs._isSigned;
-    }
-    std::cout << "Only signature status has been modified\n" << std::endl;
-    return *this;
+AForm::~AForm()
+{
 }
 
-std::string AForm::getName() const {
-    return this->_name;
+AForm &AForm::operator=(const AForm &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_isSigned = rhs._isSigned;
+	}
+	std::cout << "Signature status have been modified\n"
+			  << std::endl;
+	return *this;
 }
 
-bool AForm::getStatus() const{
-    return this->_isSigned;
+std::string AForm::getName() const
+{
+	return this->_name;
 }
 
-int AForm::getSignGrade() const{
-    return this->_signGrade;
+bool AForm::getStatus() const
+{
+	return this->_isSigned;
 }
 
-int AForm::getExecGrade() const{
-    return this->_execGrade;
+int AForm::getSignGrade() const
+{
+	return this->_signGrade;
 }
 
-
-const char* AForm::GradeTooHighException::what() const throw() {
-    return "Grade is too high to execute this Aform\n";
+int AForm::getExecGrade() const
+{
+	return this->_execGrade;
 }
 
-const char* AForm::GradeTooLowException::what() const throw() {
-    return "Grade requiered is too low to sign this Aform\n";
+const char *AForm::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high\n";
 }
 
-std::ostream& operator<<(std::ostream& os, const AForm& rhs){
-    os << "AForm " << rhs.getName() << " can be signed by grade " << rhs.getSignGrade() << " and executed by grade " << rhs.getExecGrade() << std::endl;
-    return (os);
+const char *AForm::GradeTooLowException::what() const throw()
+{
+	return "Grade requiered is too low\n";
+}
+
+std::ostream &operator<<(std::ostream &os, const AForm &rhs)
+{
+	os << "AForm " << rhs.getName() << " can be signed by grade " << rhs.getSignGrade() << " and executed by grade " << rhs.getExecGrade() << std::endl;
+	return (os);
 }
 
 void AForm::beSigned(const Bureaucrat& employee){
 
-    if (_isSigned == true) {
-        std:: cout << "This Aform has already be signed, please execute it." << std::endl;
-        return;
-    }
-    try {
-        if (employee.getGrade() > this->getSignGrade())
-            throw GradeTooLowException();
-        _isSigned = true; 
-        std::cout << "AForm is signed" << std::endl;
-    }
-    catch (const GradeTooLowException& ex) {
-        std::cerr << "Error: " << ex.what() << std::endl;
-    }
+	if (_isSigned == true)
+	{
+		std::cout << "This Aform has already be signed, please execute it." << std::endl;
+		return;
+	}
+	try
+	{
+		if (employee.getGrade() > this->getSignGrade())
+			throw GradeTooLowException();
+		_isSigned = true;
+		std::cout << "AForm is signed" << std::endl;
+	}
+	catch (const GradeTooLowException &ex)
+	{
+		std::cerr << "Error: " << ex.what() << std::endl;
+	}
 }
 
-void AForm::execute(const Bureaucrat& employee) const{
-    
-    if (_isSigned == false){
-        std::cout << "Please sign this Aform before execution" << std::endl;
-        return;
-    }
-    try {
-        if (employee.getGrade() < this->_execGrade)
-            throw GradeTooHighException();
-        std::cout << "AForm will be executed" << std::endl;
-    }
-    catch (const GradeTooHighException& ex) {
-        std::cerr << "Its's not your job, you have to delegate !" << ex.what() << std::endl; 
-    }
+void AForm::execute(const Bureaucrat& employee) const {
+
+	if (_isSigned == false)
+	{
+		std::cout << "Please sign this Aform before execution" << std::endl;
+		return;
+	}
+	try
+	{
+		if (employee.getGrade() < this->_execGrade)
+			throw GradeTooLowException();
+		std::cout << "Form will be executed" << std::endl;
+		
+	}
+	catch (const GradeTooLowException &ex)
+	{
+		std::cerr << "You can't execute this form, rat !" << ex.what() << std::endl;
+	}
+
 }
