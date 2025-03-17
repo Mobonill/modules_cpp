@@ -13,7 +13,11 @@
 
 #pragma once
 
-#include "Bureaucrat.hpp"
+#include <iostream>
+#include <stdexcept>
+#include <string>
+
+class Bureaucrat;
 
 class AForm
 {

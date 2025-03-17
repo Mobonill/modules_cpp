@@ -6,21 +6,23 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:14:03 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/15 19:00:31 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:31:52 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubby", 145, 137), _target("targForm_shrubbery") {
 
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrubby", 145, 137), _target(target + "_shrubbery") {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubby form", 145, 137), _target("targForm_shrubbery") {
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm("Shrubby", 145, 137), _target(other._target) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrubby form", 145, 137), _target(target + "_shrubbery") {
+
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm("Shrubby form", 145, 137), _target(other._target) {
 
 }
 
@@ -46,12 +48,11 @@ std::string ShrubberyCreationForm::getTarget() const
 	return (this->_target);
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &employee) const
-{
+void ShrubberyCreationForm::execute(const Bureaucrat &employee) const {
 
 	if (this->getStatus() == false)
 	{
-		std::cerr << "Shrubbery form has be be signed before execution" << std::endl;
+		throw std::runtime_error("Please sign this Shrubbery form before execution");
 		return;
 	}
 	try
@@ -61,16 +62,16 @@ void ShrubberyCreationForm::execute(const Bureaucrat &employee) const
 		std::ofstream outfile(_target.c_str());
 		if (outfile.is_open())
 		{
-			outfile << "       /\\      \n";
-			outfile << "      /..\\     \n";
-			outfile << "     /\\O\\*\\   \n";
-			outfile << "    /./\\/\\ \\  \n";
-			outfile << "   /\\*\\/\\*\\/\\ \n";
-			outfile << "  /...........\\ \n";
-			outfile << " /\\.\\/\\/./\\/O/\\\n";
-			outfile << "       ||       \n";
-			outfile << "       ||       \n";
-			outfile << "       ||       \n";
+			outfile << "       /\\                 /\\      \n";
+			outfile << "      /..\\               /..\\     \n";
+			outfile << "     /\\O\\*\\           /\\O\\*\\   \n";
+			outfile << "    /./\\/\\ \\         /./\\/\\ \\  \n";
+			outfile << "   /\\*\\/\\*\\/\\     /\\*\\/\\*\\/\\ \n";
+			outfile << "  /...........\\      /...........\\ \n";
+			outfile << " /\\.\\/\\/./\\/O/\\ /\\.\\/\\/./\\/O/\\\n";
+			outfile << "       ||                   ||       \n";
+			outfile << "       ||                   ||       \n";
+			outfile << "       ||                   ||        \n";
 			outfile.close();
 			std::cout << "Shrubbery has been created at " << _target << std::endl;
 		}
@@ -81,7 +82,5 @@ void ShrubberyCreationForm::execute(const Bureaucrat &employee) const
 	{
 		std::cerr << "Error: " << ex.what() << std::endl;
 	}
-
-	
 	return;
 }

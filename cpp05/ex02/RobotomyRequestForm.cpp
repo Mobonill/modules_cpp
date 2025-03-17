@@ -6,21 +6,23 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:25:42 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/15 19:00:20 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:55:02 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include "Bureaucrat.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RF", 72, 45), _target("Target x") {
 
-}
-
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):AForm("RF", 72, 45), _target(other._target) {
+RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy Form", 72, 45), _target("Target x") {
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RF", 72, 45), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):AForm("Robotomy Form", 72, 45), _target(other._target) {
+
+}
+
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotomy Form", 72, 45), _target(target) {
 
 }
 
@@ -46,23 +48,17 @@ std::string RobotomyRequestForm::getTarget(void) const {
 void RobotomyRequestForm::execute(const Bureaucrat& employee) const {
 
 	if (this->getStatus() == false) {
-		std::cerr << "Robotomy form has to be signed to be executed" << std::endl;
-		return ;
+		throw std::runtime_error("Please sign this Robotomy form before execution");
 	}
+	if (employee.getGrade() > 45) 
+		throw GradeTooLowException();
 
-	try {
-		if (employee.getGrade() > 45)
-			throw GradeTooLowException();
-		std::srand(std::time(NULL));
+	std::srand(std::time(NULL));
+	std::cout << "*Drrr ddrrrrrr*" << std::endl;
+	if (std::rand() % 2 == 0) 
+		std::cout << "Success: " << _target << " has been robotomized !" << std::endl;
+	else
+		std::cout << "Failure: Robotomization of " << _target << " failed" << std::endl;
 
-		std::cout << "*Drrr ddrrrrrr*" << std::endl;
-		if (std::rand() % 2 == 0) 
-			std::cout << "Success: " << _target << " has been robotomized !" << std::endl;
-		else
-			std::cout << "Failure: Robotomization of " << _target << " failed" << std::endl;
-	}
-	catch (const GradeTooLowException& ex) {
-		std::cerr << "Error: " << ex.what() << std::endl; 
-	}
+	return ;
 }
-

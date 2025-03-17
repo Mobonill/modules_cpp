@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:35:54 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/14 19:02:40 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/15 18:35:31 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int Form::getExecGrade() const{
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-    return "Grade is too high to execute this form\n";
+    return "Grade is too high\n";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-    return "Grade requiered is too low to sign this form\n";
+    return "Grade requiered is too low\n";
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& rhs){
@@ -91,10 +91,10 @@ void Form::beExecuted(Bureaucrat employee) {
     }
     try {
         if (employee.getGrade() < this->_execGrade)
-            throw GradeTooHighException();
+            throw GradeTooLowException();
         std::cout << "Form will be executed" << std::endl;
     }
-    catch (const GradeTooHighException& ex) {
-        std::cerr << "Its's not your job, you have to delegate !" << ex.what() << std::endl; 
+    catch (const GradeTooLowException& ex) {
+        std::cerr << "You can't execute this form, rat !" << ex.what() << std::endl; 
     }
 }

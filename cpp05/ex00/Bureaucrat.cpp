@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:06:23 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/14 13:21:45 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/17 14:47:54 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void Bureaucrat::decrementGrade() {
             throw GradeTooLowException();
         _grade++;
         std::cout << "Grade decremented. Actual grade: " << _grade << std::endl;
-        
     }
     catch (const GradeTooLowException& except)
     {

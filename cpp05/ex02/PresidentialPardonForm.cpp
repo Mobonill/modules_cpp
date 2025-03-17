@@ -6,11 +6,12 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:54:11 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/15 19:14:06 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:35:49 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PP Form", 25, 5), _target("Prostetnic Vogon Jeltz") {
 
@@ -50,7 +51,7 @@ void PresidentialPardonForm::execute(const Bureaucrat& employee) const {
 	
 	if (this->getStatus() == false)
 	{
-		std::cerr << "Presidential form has be be signed before execution" << std::endl;
+		throw std::runtime_error("Please sign this  Presidential form before execution");
 		return;
 	}
 	try

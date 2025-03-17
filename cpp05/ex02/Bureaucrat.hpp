@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:07:57 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/15 19:30:24 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:49:35 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Bureaucrat
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
-		void executeForm(AForm const& form);
+		void executeForm(const AForm& form) const;
 
 		class GradeTooHighException : public std::exception
 		{

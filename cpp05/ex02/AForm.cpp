@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 AForm::AForm() : _name("Mysterious AForm"), _isSigned(false), _signGrade(50), _execGrade(100)
 {
@@ -102,19 +103,19 @@ void AForm::execute(const Bureaucrat& employee) const {
 
 	if (_isSigned == false)
 	{
-		std::cout << "Please sign this Aform before execution" << std::endl;
+		throw std::runtime_error("Please sign this Aform before execution");
 		return;
 	}
 	try
 	{
-		if (employee.getGrade() < this->_execGrade)
+		if (employee.getGrade() > this->_execGrade)
 			throw GradeTooLowException();
 		std::cout << "Form will be executed" << std::endl;
-		
 	}
 	catch (const GradeTooLowException &ex)
 	{
 		std::cerr << "You can't execute this form, rat !" << ex.what() << std::endl;
 	}
-
 }
+
+

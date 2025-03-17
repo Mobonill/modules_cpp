@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:06:23 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/15 19:31:58 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:32:29 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,15 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &rhs)
 	return os;
 }
 
-void Bureaucrat::executeForm(AForm const& form) {
+void Bureaucrat::executeForm(const AForm &form) const {
 
-	if (form.execute(Bureaucrat)
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << this->_name << " couldn't execute " << form.getName() << std::endl;
+	}
 }
