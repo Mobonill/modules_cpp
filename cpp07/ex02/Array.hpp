@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/20 15:38:32 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/22 14:42:30 by morgane          ###   ########.fr       */
+/*   Created: 2025/03/22 15:42:07 by morgane           #+#    #+#             */
+/*   Updated: 2025/03/22 19:29:20 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-#include <iostream>
 #include <string>
-#include <stdio.h>
-#include <ctype.h>
+#include <iostream>
+#include <exception>
+#include <stdint.h>
 
 template <typename T>
-void iter(T* tab, int length, void (*function)(T&)){
-    for (int i = 0; i < length; i++)
-        function(tab[i]);
-}
+class Array {
+
+    private:
+    T* _array;
+    int _size;
+
+    public:
+    Array(): _array(NULL), _size(0) {};
+    ~Array() {};
+    Array(unsigned int n) _array(new T[n]()), _size(n) {};
+    Array(const Array<T>& copy): _array(copy._array), _size(copy._size) {};
+    Array<T>& operator=(const Array<T>& rhs) {};
+    
+};
+

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/20 15:38:32 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/22 14:42:30 by morgane          ###   ########.fr       */
+/*   Created: 2025/03/22 18:17:59 by morgane           #+#    #+#             */
+/*   Updated: 2025/03/22 19:07:34 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Array.hpp"
 
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <ctype.h>
+int main () {
+    
+    int *a = new int();
+    std::cout << *a << std::endl;
 
-template <typename T>
-void iter(T* tab, int length, void (*function)(T&)){
-    for (int i = 0; i < length; i++)
-        function(tab[i]);
+    return 0;
 }
