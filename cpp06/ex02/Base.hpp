@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 17:52:49 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/19 17:03:40 by mobonill         ###   ########.fr       */
+/*   Created: 2025/03/19 18:18:58 by mobonill          #+#    #+#             */
+/*   Updated: 2025/03/19 19:10:36 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <stdexcept>
+#include <stdint.h>
+#include <ctime>
+#include <cstdlib>
 
-class ScalarConverter {
+
+class Base {
 	
-	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter &other);
-		~ScalarConverter();
-		ScalarConverter &operator=(const ScalarConverter &rhs);
-
 	public:
-		static void convert(std::string literal);
+		Base() throw();
+		Base(const Base &copy) throw();
+		Base &operator=(const Base &rhs) throw();
+		virtual ~Base() throw();
+
+		class Casting : public std::exception
+		{
+			const char *what() const throw();
+		};
 };
+
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+Base*	generate(void);
+void	identify(Base* p);
+void	identify(Base& p);

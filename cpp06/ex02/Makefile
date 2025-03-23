@@ -1,8 +1,8 @@
-NAME = convert
+NAME = cast
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 SRC =	main.cpp \
-		Serializer.cpp \
+		Base.cpp \
 		
 
 OBJ = $(SRC:.cpp=.o)
