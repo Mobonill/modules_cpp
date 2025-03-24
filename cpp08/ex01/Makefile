@@ -2,6 +2,7 @@ NAME = span
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 SRC =	main.cpp \
+		Span.cpp \
 		
 
 OBJ = $(SRC:.cpp=.o)
