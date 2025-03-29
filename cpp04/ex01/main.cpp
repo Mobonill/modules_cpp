@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:33:19 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/12 15:49:01 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/13 14:41:14 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int main(void) {
 	
 	delete j;
 	delete i;
+	delete test;
 	for (int i = 0; i < 10; i++)
 		delete animals[i];
 

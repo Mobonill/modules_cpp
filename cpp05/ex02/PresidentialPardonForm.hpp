@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:53:27 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/17 16:10:14 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:54:19 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm(const PresidentialPardonForm& other);
 		PresidentialPardonForm(std::string target);
 		~PresidentialPardonForm();
-		void setTarget(std::string target);
+		void setTarget(const std::string& target);
 		std::string getTarget(void) const;
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
 		void execute(const Bureaucrat& employee) const;

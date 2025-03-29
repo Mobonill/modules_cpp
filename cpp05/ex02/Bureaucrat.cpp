@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:06:23 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/17 16:32:29 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:02:43 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,18 @@ Bureaucrat::Bureaucrat() : _name("Unknown"), _grade(150)
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
 {
-	try
-	{
-		if (grade < 1)
-			throw GradeTooHighException();
-		if (grade > 150)
-			throw GradeTooLowException();
-		_grade = grade;
-	}
-	catch (const GradeTooHighException &except)
-	{
-		std::cerr << "Exception in constructor: " << except.what();
+	if (grade < 1) {
 		_grade = 1;
+		std::cout << "Grade is too high, so Bureaucrate has been greated with maximum grade 1.\n";
+		throw GradeTooHighException();
 	}
-	catch (const GradeTooLowException &except)
-	{
-		std::cerr << "Exception in constructor: " << except.what();
+	else if (grade > 150) {
 		_grade = 150;
+		std::cout << "Grade is too low, so Bureaucrate has been greated with minimum grade 150.\n";
+		throw GradeTooLowException();
 	}
+	else
+		_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade)
@@ -68,33 +62,18 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	try // L'instruction throw GradeTooHighException(); crée un objet temporaire de type GradeTooHighException
-	{
-		if (_grade - 1 < 1)
-			throw GradeTooHighException();
-		_grade--;
-		std::cout << "Grade incremented. Actual grade: " << _grade << std::endl;
-	}
-	catch (const GradeTooHighException &except) // Cet objet temporaire est référencé par la variable except dans catch
-	{
-		std::cerr << "Error: " << except.what() << std::endl;
-	} // L’objet temporaire contenant la méthode what() est appelé via except, ce qui affiche son message.
+	if (_grade - 1 < 1)
+		throw GradeTooHighException();
+	_grade--;
+	std::cout << "Grade incremented. Actual grade: " << _grade << std::endl;
 }
 
 void Bureaucrat::decrementGrade()
 {
-
-	try
-	{
-		if (_grade + 1 > 150)
-			throw GradeTooLowException();
-		_grade++;
-		std::cout << "Grade decremented. Actual grade: " << _grade << std::endl;
-	}
-	catch (const GradeTooLowException &except)
-	{
-		std::cerr << "Error: " << except.what() << std::endl;
-	}
+	if (_grade + 1 > 150)
+		throw GradeTooLowException();
+	_grade++;
+	std::cout << "Grade decremented. Actual grade: " << _grade << std::endl;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()

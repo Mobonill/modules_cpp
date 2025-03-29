@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:52:49 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/07 17:33:23 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/13 13:06:07 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ ScavTrap::~ScavTrap() {
 ScavTrap& ScavTrap::operator=(const ScavTrap &other) {
 
 	std::cout << "ScavTrap Copy assignement operator called" << std::endl;
-	if (this != &other)
-		*this = other;
+	if (this != &other) {
+		this->_attack = other._attack;
+		this->_energy = other._energy;
+		this->_hit = other._hit;
+		this->_name = other._name;
+	}
 	return (*this);
 }
 

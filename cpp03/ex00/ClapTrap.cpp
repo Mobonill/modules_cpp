@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:32:32 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/07 19:05:13 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/13 13:02:15 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ std::string ClapTrap::getName(void) {
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &other)
-		*this = other;
+	if (this != &other) {
+		this->_attack = other._attack;
+		this->_energy = other._energy;
+		this->_hit = other._hit;
+		this->_name = other._name;
+	}
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:25:42 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/17 16:55:02 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:54:11 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 	return(*this);
 }
 
-void RobotomyRequestForm::setTarget(std::string target) {
+void RobotomyRequestForm::setTarget(const std::string& target) {
 	this->_target = target;
 }
 
@@ -48,7 +48,7 @@ std::string RobotomyRequestForm::getTarget(void) const {
 void RobotomyRequestForm::execute(const Bureaucrat& employee) const {
 
 	if (this->getStatus() == false) {
-		throw std::runtime_error("Please sign this Robotomy form before execution");
+		throw std::runtime_error("Please sign this Robotomy form before execution\n");
 	}
 	if (employee.getGrade() > 45) 
 		throw GradeTooLowException();

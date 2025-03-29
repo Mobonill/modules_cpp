@@ -1,6 +1,6 @@
 NAME = bureaucrat
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CFLAGS = -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address
 SRC =	main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \

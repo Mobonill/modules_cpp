@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:44:52 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/14 19:03:18 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/29 17:17:46 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,20 @@
 
 int main() {
 
-    Bureaucrat b("b", 40);
-    Bureaucrat a("a", 145);
-    Form x("xFile", 100, 50);
 
-    std::cout << std::endl <<std::endl;
-    x.beSigned(a);
-    x.beSigned(b);
-    std::cout << std::endl <<std::endl;
+	try {
+		Bureaucrat b("b", 4);
+		Bureaucrat a("a", 145);
+		Form x("xFile", 100, 50);
+		x.beSigned(a);
+		x.beSigned(b);
+		x.beExecuted(a);
+		x.beExecuted(b);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Error: " << e.what();
+	}
 
-    x.beExecuted(a);
-    x.beExecuted(b);
-
-    return 0;
+	return 0;
 }

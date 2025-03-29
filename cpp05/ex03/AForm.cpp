@@ -37,9 +37,8 @@ AForm &AForm::operator=(const AForm &rhs)
 	if (this != &rhs)
 	{
 		this->_isSigned = rhs._isSigned;
+		std::cout << "Signature status have been modified\n";
 	}
-	std::cout << "Signature status have been modified\n"
-			  << std::endl;
 	return *this;
 }
 
@@ -86,17 +85,10 @@ void AForm::beSigned(const Bureaucrat& employee){
 		std::cout << "This Aform has already be signed, please execute it." << std::endl;
 		return;
 	}
-	try
-	{
-		if (employee.getGrade() > this->getSignGrade())
-			throw GradeTooLowException();
-		_isSigned = true;
-		std::cout << "AForm is signed" << std::endl;
-	}
-	catch (const GradeTooLowException &ex)
-	{
-		std::cerr << "Error: " << ex.what() << std::endl;
-	}
+	if (employee.getGrade() > this->getSignGrade())
+		throw GradeTooLowException();
+	_isSigned = true;
+	std::cout << "AForm is signed" << std::endl;
 }
 
 void AForm::execute(const Bureaucrat& employee) const {
@@ -105,8 +97,10 @@ void AForm::execute(const Bureaucrat& employee) const {
 	{
 		throw std::runtime_error("Please sign this Aform before execution");
 		return;
-    }
-    if (employee.getGrade() > this->_execGrade)
-        throw GradeTooLowException();
-    std::cout << "Form will be executed" << std::endl;
+	}
+	if (employee.getGrade() > this->_execGrade)
+		throw GradeTooLowException();
+	std::cout << "Form will be executed" << std::endl;
 }
+
+

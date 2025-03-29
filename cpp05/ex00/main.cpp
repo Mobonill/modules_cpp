@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:44:52 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/14 13:17:13 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/29 15:42:31 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 int main() {
 
-    Bureaucrat a("a", 150);
-    Bureaucrat b ;
-    b = a;
+	try
+	{
+		Bureaucrat a("a", 150);
+		Bureaucrat b;
+		b = a;
 
-    a.incrementGrade();
-    b.decrementGrade();
+		a.incrementGrade();
+		b.decrementGrade();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Error: " << e.what();
+	}
 
-    return 0;
+	return 0;
 }

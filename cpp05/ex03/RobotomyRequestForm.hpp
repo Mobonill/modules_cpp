@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:21:49 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/17 16:10:29 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:54:03 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm(std::string target);
 		~RobotomyRequestForm();
-		void setTarget(std::string target);
+		void setTarget(const std::string& target);
 		std::string getTarget(void) const;
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
 		void execute(const Bureaucrat &employee) const;

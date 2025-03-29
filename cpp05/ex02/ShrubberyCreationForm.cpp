@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 19:14:03 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/17 16:31:52 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:53:54 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::setTarget(std::string target)
+void ShrubberyCreationForm::setTarget(const std::string& target)
 {
 	this->_target = target + "_shrubbery";
 }
@@ -55,32 +55,25 @@ void ShrubberyCreationForm::execute(const Bureaucrat &employee) const {
 		throw std::runtime_error("Please sign this Shrubbery form before execution");
 		return;
 	}
-	try
+	if (employee.getGrade() > 137)
+		throw GradeTooLowException();
+	std::ofstream outfile(_target.c_str());
+	if (outfile.is_open())
 	{
-		if (employee.getGrade() > 137)
-			throw GradeTooLowException();
-		std::ofstream outfile(_target.c_str());
-		if (outfile.is_open())
-		{
-			outfile << "       /\\                 /\\      \n";
-			outfile << "      /..\\               /..\\     \n";
-			outfile << "     /\\O\\*\\           /\\O\\*\\   \n";
-			outfile << "    /./\\/\\ \\         /./\\/\\ \\  \n";
-			outfile << "   /\\*\\/\\*\\/\\     /\\*\\/\\*\\/\\ \n";
-			outfile << "  /...........\\      /...........\\ \n";
-			outfile << " /\\.\\/\\/./\\/O/\\ /\\.\\/\\/./\\/O/\\\n";
-			outfile << "       ||                   ||       \n";
-			outfile << "       ||                   ||       \n";
-			outfile << "       ||                   ||        \n";
-			outfile.close();
-			std::cout << "Shrubbery has been created at " << _target << std::endl;
-		}
-		else
-			std::cerr << "Error: failed to open " << _target << std::endl;
+		outfile << "       /\\                   /\\      \n";
+		outfile << "      /..\\                 /..\\     \n";
+		outfile << "     /\\O\\*\\               /\\O\\*\\   \n";
+		outfile << "    /./\\/\\ \\             /./\\/\\ \\  \n";
+		outfile << "   /\\*\\/\\*\\/\\           /\\*\\/\\*\\/\\ \n";
+		outfile << "  /..........\\         /..........\\ \n";
+		outfile << " /\\.\\/\\/./\\/O/\\       /\\.\\/\\/./\\/O/\\\n";
+		outfile << "       ||                   ||       \n";
+		outfile << "       ||                   ||       \n";
+		outfile << "       ||                   ||        \n";
+		outfile.close();
+		std::cout << "Shrubbery has been created at " << _target << std::endl;
 	}
-	catch (const GradeTooLowException &ex)
-	{
-		std::cerr << "Error: " << ex.what() << std::endl;
-	}
+	else
+		std::cerr << "Error: failed to open " << _target << std::endl;
 	return;
 }

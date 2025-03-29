@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:54:11 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/17 16:35:49 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:52:51 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void PresidentialPardonForm::setTarget(std::string target)
+void PresidentialPardonForm::setTarget(const std::string& target)
 {
 	this->_target = target;
 }
@@ -51,18 +51,12 @@ void PresidentialPardonForm::execute(const Bureaucrat& employee) const {
 	
 	if (this->getStatus() == false)
 	{
-		throw std::runtime_error("Please sign this  Presidential form before execution");
+		throw std::runtime_error("Please sign this Presidential form before execution\n");
 		return;
 	}
-	try
-	{
-		if (employee.getGrade() > 5)
-			throw GradeTooLowException();
+	if (employee.getGrade() > 5) {
+		throw GradeTooLowException();
 		std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
-	}
-	catch (const GradeTooLowException &ex)
-	{
-		std::cerr << "Error: " << ex.what() << std::endl;
 	}
 
 	return;

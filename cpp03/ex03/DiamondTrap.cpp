@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 18:26:41 by morgane           #+#    #+#             */
-/*   Updated: 2025/03/07 18:59:59 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/13 13:07:16 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,12 @@ std::string DiamondTrap::getName(void) {
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other) {
 
 	std::cout << "DiamondTrap Copy assignement operator called" << std::endl;
-	if (this != &other)
-		*this = other;
+	if (this != &other) {
+		this->_attack = other._attack;
+		this->_energy = other._energy;
+		this->_hit = other._hit;
+		this->_name = other._name;
+	}
 	return (*this);
 }
 

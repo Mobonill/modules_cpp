@@ -6,17 +6,13 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 09:30:24 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/24 19:32:44 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:35:27 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Span.hpp"
 
-
-Span::Span(): _stock(), N(0) {
-	// _stock.reserve(N);
-}
+Span::Span(): _stock(), N(0) {}
 
 Span::Span(const Span& copy): _stock(copy._stock), N(copy.N) {}
 

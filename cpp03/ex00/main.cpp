@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:32:49 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/05 18:02:23 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:03:24 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main() {
 
 	ClapTrap nico;
 	ClapTrap edgar("Edgar");
-	nico.setName("Babe");
+	nico.setName("Nico");
 
 	edgar = nico;
 	nico.attack("Edgar");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 16:25:42 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/18 16:49:52 by morgane          ###   ########.fr       */
+/*   Updated: 2025/03/29 16:54:11 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include "Bureaucrat.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RRF", 72, 45), _target("Target x") {
+RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy Form", 72, 45), _target("Target x") {
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):AForm("RRF", 72, 45), _target(other._target) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):AForm("Robotomy Form", 72, 45), _target(other._target) {
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RRF", 72, 45), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotomy Form", 72, 45), _target(target) {
 
 }
 
@@ -37,7 +37,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 	return(*this);
 }
 
-void RobotomyRequestForm::setTarget(std::string target) {
+void RobotomyRequestForm::setTarget(const std::string& target) {
 	this->_target = target;
 }
 
@@ -48,13 +48,10 @@ std::string RobotomyRequestForm::getTarget(void) const {
 void RobotomyRequestForm::execute(const Bureaucrat& employee) const {
 
 	if (this->getStatus() == false) {
-		throw std::runtime_error("Please sign this Robotomy form before execution");
-		return;
+		throw std::runtime_error("Please sign this Robotomy form before execution\n");
 	}
-	if (employee.getGrade() > 45) {
+	if (employee.getGrade() > 45) 
 		throw GradeTooLowException();
-		return;
-	}
 
 	std::srand(std::time(NULL));
 	std::cout << "*Drrr ddrrrrrr*" << std::endl;

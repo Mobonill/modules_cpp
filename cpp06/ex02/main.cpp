@@ -6,7 +6,7 @@
 /*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:47:11 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/19 19:12:58 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:55:39 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 
 int main()
 {
-
-
+  
 	Base* a;
 	a = generate();
-	identify(a);
+	identify(*a);
 
-	Base *b;
+	Base* b;
 	
 	b = generate();
-	identify(*b);
+	identify(b);
 
 	return (0);
 }
