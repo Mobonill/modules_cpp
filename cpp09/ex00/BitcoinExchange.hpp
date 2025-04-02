@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:16:36 by mobonill          #+#    #+#             */
-/*   Updated: 2025/04/02 13:11:18 by morgane          ###   ########.fr       */
+/*   Updated: 2025/04/02 15:31:14 by mobonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <string>
 #include <iostream>
