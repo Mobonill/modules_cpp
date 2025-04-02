@@ -6,7 +6,7 @@
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:16:36 by mobonill          #+#    #+#             */
-/*   Updated: 2025/04/01 23:34:41 by morgane          ###   ########.fr       */
+/*   Updated: 2025/04/02 13:11:18 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,20 @@ class Bitcoin {
 
 	private:
 		std::map<std::string, float> _data;
+		std::map<std::string, float> _exchange;
 
 	public:
 		Bitcoin();
 		Bitcoin(const Bitcoin& copy);
 		~Bitcoin();
-		void downloadDataBase(char **argv);
-		void printData();
-    	float getValueByDate(const std::string& date) const;
+		Bitcoin& operator=(const Bitcoin& rhs);
+		void downloadDataBase(void);
+		void parseDataBaseToCheck(char **argv);
+		float getValueByDate(const std::string& searchDate);
+		bool isValidDateFormat(const std::string& date);
 		bool isValidDate(const std::string& date);
 		bool isBiYear(int year);
-		bool isValidDateFormat(const std::string& date);
-		float parseDataBaseToCheck(char **argv, std::string& searchDate);
+		void printData();
 
 	
 };
