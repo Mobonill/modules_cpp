@@ -6,7 +6,7 @@
 /*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:16:45 by mobonill          #+#    #+#             */
-/*   Updated: 2025/04/02 13:14:26 by morgane          ###   ########.fr       */
+/*   Updated: 2025/04/07 20:11:46 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ void Bitcoin::downloadDataBase()
 	std::string line;
 
 	if (!infile.is_open())
-	{
-		std::cerr << "Error: input is invalid or empty\n";
-		return;
-	}
+		throw std::runtime_error("Error: data file is invalid / empty");
 	std::getline(infile, line);
+	if (infile == NULL)
+		throw std::runtime_error("Error: data file is invalid / empty");
+	if (strcmp("date,exchange_rate", line.c_str()))
+		throw std::runtime_error("Error: first line of data.csv file format is invalid, please specify : 'date,exchange_rate'");
 	while (std::getline(infile, line))
 	{
 		std::istringstream str(line);
@@ -72,6 +73,14 @@ void Bitcoin::parseDataBaseToCheck(char **argv)
 		return ;
 	}
 	std::getline(infile, line);
+	if (infile == NULL) {
+		std::cerr << "Error: input is invalid or empty\n";
+		return ;
+	}
+	if (strcmp("date | value", line.c_str())) {
+		std::cerr << "Error: first line of input file is invalid, please specify : 'date | value'" << std::endl;
+		return;
+	}
 	while (std::getline(infile, line))
 	{
 		std::istringstream str(line);
@@ -83,6 +92,10 @@ void Bitcoin::parseDataBaseToCheck(char **argv)
 		}
 		if (isValidDateFormat(date) == false) {
 			std::cerr << "Error: invalid date format: " << date << std::endl;
+			continue;
+		}
+		if (isValidDate(date) == false) {
+			std::cerr << "Error: invalid date on line " << line << std::endl;
 			continue;
 		}
 		if (line[10] != ' ' || line[11] != '|' || line[12] != ' ') {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 19:16:36 by mobonill          #+#    #+#             */
-/*   Updated: 2025/04/02 15:31:14 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:02:41 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <fstream>
 #include <sstream>
 #include <regex.h>
+#include <cstring>
 
 class Bitcoin {
 

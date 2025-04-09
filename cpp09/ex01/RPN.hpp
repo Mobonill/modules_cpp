@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:30:59 by mobonill          #+#    #+#             */
-/*   Updated: 2025/04/02 15:59:23 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:52:10 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,27 @@
 #include <string>
 #include <iostream>
 #include <stack>
+#include <fstream>
+#include <sstream>
+#include <ostream>
+
 
 class RPN {
 
 	private:
-		template <class T, class Container = deque<T> > class stack;
-
+		std::stack<std::string> _stack;
+	
 	public:
 		RPN();
 		RPN(const RPN& copy);
 		~RPN();
-		RPN operator=(const operator& rhs);
+		RPN operator=(const RPN& rhs);
+		void parseInput(char **argv);
+		void printStack(void);
+		bool isNumber(const std::string& str);
+
 
 };
+
+int stringToInt(const std::string& str);
+std::string intToString(int value);
