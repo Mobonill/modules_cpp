@@ -3,88 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mobonill <mobonill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morgane <morgane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:59:14 by mobonill          #+#    #+#             */
-/*   Updated: 2025/03/25 16:53:40 by mobonill         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:53:23 by morgane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stack>
 #include <string>
 #include <queue>
+#include <iostream>
 
-template <typename T, typename MutantStack = std::stack<T>>
-class MutantStack {
-
-	class iterator {
-
-		private:
-			std::queue<T> fifo;
-
-		public:
-			iterator(const MutantStack<T>& stack) {
-				MutantStack tmp = stack;
-				std::stack<T> queue;
-				
-				while (!tmp.empty())
-				{
-					queue.push(tmp.top());
-					tmp.pop();
-				}
-				while (!queue.empty())
-				{
-					fifo.push(queue.top());
-					queue.pop();
-				}
-			}
-			iterator++()
-	};
-
-	private:
+template <typename T>
+class MutantStack : public std::stack<T>
+{
 
 	public:
-		MutantStack() {};
-		~MutantStack() {};
-		MutantStack(const MutantStack& copy) {};
-		MutantStack<T>& operator=(const MutantStack<T>& rhs);
+		MutantStack() {}
+		MutantStack(const MutantStack &other) : std::stack<T>(other) {}
+		~MutantStack() {}
+		MutantStack &operator=(const MutantStack &other);
+		typedef typename std::deque<T>::iterator iterator;
 
+		iterator begin() { return this->c.begin(); }
+		iterator end() { return this->c.end(); }
 };
 
-MutantStack<T>& MutantStack::operator=(const MutantStack<T>& rhs) {
-
+template <typename T>
+MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &rhs)
+{
+	if (this != &rhs)
+	{
+		std::stack<T>::operator=(rhs);
+	}
+	return *this;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Vérifie si l'itérateur a encore des éléments
-        bool hasNext() const { return !fifoQueue.empty(); }
-
-        // Accède à l'élément actuel
-        T next() {
-            T value = fifoQueue.front();
-            fifoQueue.pop();
-            return value;
-        }
